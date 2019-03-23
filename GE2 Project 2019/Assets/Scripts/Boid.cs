@@ -56,6 +56,14 @@ public class Boid : MonoBehaviour
         return desired - velocity;
     }
 
+    public Vector3 FleeForce(Vector3 target)
+    {
+        Vector3 desired = transform.position - target;
+        desired.Normalize();
+        desired *= maxSpeed;
+        return desired - velocity;
+    }
+
     public Vector3 ArriveForce(Vector3 target, float slowingDistance = 15.0f)
     {
         Vector3 toTarget = target - transform.position;

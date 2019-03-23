@@ -8,7 +8,7 @@ public class OffsetPursue : SteeringBehaviour
 
     Vector3 targetPos;
     Vector3 worldTarget;
-    Vector3 offset;
+    public Vector3 offset;
 
     // Start is called before the first frame update
     void Start()

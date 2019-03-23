@@ -4109,7 +4109,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2734920404849206132}
-  - component: {fileID: 2521135474153441864}
   - component: {fileID: 2521135474153441865}
   m_Layer: 0
   m_Name: Jedi Ship 1
@@ -4139,24 +4138,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2521135474153441864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2521135474153441863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0d6544bfb076a14ab48e7d075564ff5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weight: 1
-  force: {x: 0, y: 0, z: 0}
-  boid: {fileID: 0}
-  distance: 15
-  radius: 10
-  jitter: 100
 --- !u!114 &2521135474153441865
 MonoBehaviour:
   m_ObjectHideFlags: 0
