@@ -1,10 +1,12 @@
-!(https://i.imgur.com/myyhfVP.jpg)
+![S1](https://i.imgur.com/myyhfVP.jpg)
 
 Scene 1. 
 
 Jedi ships fly through the battle, past their own gunships, before gliding over a frigate and then swooping down to a deeper level within the ship.
 Jedi ships will use a follow behavior, the second Jedi ship will offset the first.
 Camera will lerp beside the first ship and also make sure to keep both the frigate and Jedi ship in frame at all times.
+
+![S2](https://i.imgur.com/LZS6SBr.jpg)
 
 Scene 2.
 
@@ -14,11 +16,15 @@ Enemy ship is using seek and shoot when ally is close to being in line with guns
 Jedis fly by and shoot down enemy ship.
 Camera follows X-Wing ally + Enemy (point in-between) till the enemy is shot down, in which it stops and lets the Jedi’s exit frame.
 
+![S3](https://i.imgur.com/ThUwoQV.jpg)
+
 Scene 3.
 
 Jedi’s pass a group of ally X-Wings who then decide to support them and group up.
 Multiple X-Wings organise behind the two Jedis, creating a formation. All are using offset pursue. 
 The camera follows the Jedi’s but keeps the X-Wings in frame always.
+
+![S4](https://i.imgur.com/VEc9dr7.jpg)
 
 Scene 4. 
 
@@ -27,11 +33,15 @@ Most are shot down with lasers and missiles.
 Jedis flee from the missiles.
 Camera watches the enemy’s and when the X-Wings begin getting shot, it goes to a new view of them
 
+![S5](https://i.imgur.com/T3TBmFW.jpg)
+
 Scene 5. 
 
 Jedi 2 spins on around his forward axis, causing the two following missiles to close their distance together before exploding. 
 Jedi 1 pulls up completely and does a loop, to no avail.
 Camera will follow Jedi 2 first, then Jedi 1.
+
+![S6](https://i.imgur.com/TpelIa8.jpg)
 
 Scene 6. 
 
