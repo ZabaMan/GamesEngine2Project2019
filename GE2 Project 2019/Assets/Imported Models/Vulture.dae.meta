@@ -1,0 +1,519 @@
+fileFormatVersion: 2
+guid: e8e199cd3e6fa254aa4a706b5e3cab6f
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Body
+    100002: Bryce
+    100004: FullHead
+    100006: FullWing
+    100008: FullWing 1
+    100010: ID103
+    100012: ID111
+    100014: ID117
+    100016: ID121
+    100018: ID125
+    100020: ID129
+    100022: ID13
+    100024: ID133
+    100026: ID137
+    100028: ID141
+    100030: ID159
+    100032: ID165
+    100034: ID171
+    100036: ID177
+    100038: ID183
+    100040: ID189
+    100042: ID195
+    100044: ID201
+    100046: ID21
+    100048: ID213
+    100050: ID219
+    100052: ID225
+    100054: ID231
+    100056: ID237
+    100058: ID243
+    100060: ID249
+    100062: ID253
+    100064: ID267
+    100066: ID275
+    100068: ID283
+    100070: ID289
+    100072: ID29
+    100074: ID295
+    100076: ID301
+    100078: ID314
+    100080: ID320
+    100082: ID326
+    100084: ID334
+    100086: ID350
+    100088: ID350 1
+    100090: ID358
+    100092: ID358 1
+    100094: ID364
+    100096: ID364 1
+    100098: ID37
+    100100: ID370
+    100102: ID370 1
+    100104: ID376
+    100106: ID376 1
+    100108: ID390
+    100110: ID390 1
+    100112: ID396
+    100114: ID396 1
+    100116: ID402
+    100118: ID402 1
+    100120: ID408
+    100122: ID408 1
+    100124: ID414
+    100126: ID414 1
+    100128: ID43
+    100130: ID430
+    100132: ID436
+    100134: ID444
+    100136: ID450
+    100138: ID456
+    100140: ID462
+    100142: ID472
+    100144: ID478
+    100146: ID484
+    100148: ID51
+    100150: ID57
+    100152: ID65
+    100154: ID71
+    100156: ID77
+    100158: ID83
+    100160: ID89
+    100162: ID97
+    100164: instance_0
+    100166: instance_1
+    100168: instance_2
+    100170: instance_3
+    100172: instance_4
+    100174: instance_5
+    100176: instance_6
+    100178: instance_7
+    100180: instance_8
+    100182: instance_9
+    100184: //RootNode
+    100186: ske3
+    100188: skp_camera_Last_Saved_SketchUp_View
+    100190: Wing
+    100192: Wing 1
+    100194: Wing 2
+    100196: Wing 3
+    400000: Body
+    400002: Bryce
+    400004: FullHead
+    400006: FullWing
+    400008: FullWing 1
+    400010: ID103
+    400012: ID111
+    400014: ID117
+    400016: ID121
+    400018: ID125
+    400020: ID129
+    400022: ID13
+    400024: ID133
+    400026: ID137
+    400028: ID141
+    400030: ID159
+    400032: ID165
+    400034: ID171
+    400036: ID177
+    400038: ID183
+    400040: ID189
+    400042: ID195
+    400044: ID201
+    400046: ID21
+    400048: ID213
+    400050: ID219
+    400052: ID225
+    400054: ID231
+    400056: ID237
+    400058: ID243
+    400060: ID249
+    400062: ID253
+    400064: ID267
+    400066: ID275
+    400068: ID283
+    400070: ID289
+    400072: ID29
+    400074: ID295
+    400076: ID301
+    400078: ID314
+    400080: ID320
+    400082: ID326
+    400084: ID334
+    400086: ID350
+    400088: ID350 1
+    400090: ID358
+    400092: ID358 1
+    400094: ID364
+    400096: ID364 1
+    400098: ID37
+    400100: ID370
+    400102: ID370 1
+    400104: ID376
+    400106: ID376 1
+    400108: ID390
+    400110: ID390 1
+    400112: ID396
+    400114: ID396 1
+    400116: ID402
+    400118: ID402 1
+    400120: ID408
+    400122: ID408 1
+    400124: ID414
+    400126: ID414 1
+    400128: ID43
+    400130: ID430
+    400132: ID436
+    400134: ID444
+    400136: ID450
+    400138: ID456
+    400140: ID462
+    400142: ID472
+    400144: ID478
+    400146: ID484
+    400148: ID51
+    400150: ID57
+    400152: ID65
+    400154: ID71
+    400156: ID77
+    400158: ID83
+    400160: ID89
+    400162: ID97
+    400164: instance_0
+    400166: instance_1
+    400168: instance_2
+    400170: instance_3
+    400172: instance_4
+    400174: instance_5
+    400176: instance_6
+    400178: instance_7
+    400180: instance_8
+    400182: instance_9
+    400184: //RootNode
+    400186: ske3
+    400188: skp_camera_Last_Saved_SketchUp_View
+    400190: Wing
+    400192: Wing 1
+    400194: Wing 2
+    400196: Wing 3
+    2000000: skp_camera_Last_Saved_SketchUp_View
+    2100000: __DarkGoldenrod_
+    2100002: __Gray6_
+    2100004: __Beige_1
+    2100006: __Brown_
+    2100008: __Charcoal_
+    2100010: __Black_
+    2100012: __Redwood_
+    2100014: jean_blue
+    2100016: __Gray_
+    2100018: __DarkKhaki_
+    2100020: material_5
+    2100022: material_4
+    2100024: __DarkGray_
+    2100026: __CorrogateRust_
+    2100028: material_2
+    2100030: material_3
+    2100032: __Red_
+    2100034: material_1
+    2100036: __DarkOrange_
+    2300000: Body
+    2300002: Bryce
+    2300004: FullHead
+    2300006: FullWing
+    2300008: FullWing 1
+    2300010: ID103
+    2300012: ID13
+    2300014: ID159
+    2300016: ID165
+    2300018: ID171
+    2300020: ID177
+    2300022: ID183
+    2300024: ID189
+    2300026: ID21
+    2300028: ID213
+    2300030: ID219
+    2300032: ID225
+    2300034: ID231
+    2300036: ID237
+    2300038: ID243
+    2300040: ID267
+    2300042: ID275
+    2300044: ID283
+    2300046: ID289
+    2300048: ID29
+    2300050: ID295
+    2300052: ID301
+    2300054: ID314
+    2300056: ID320
+    2300058: ID326
+    2300060: ID334
+    2300062: ID350
+    2300064: ID350 1
+    2300066: ID358
+    2300068: ID358 1
+    2300070: ID364
+    2300072: ID364 1
+    2300074: ID37
+    2300076: ID370
+    2300078: ID370 1
+    2300080: ID376
+    2300082: ID376 1
+    2300084: ID390
+    2300086: ID390 1
+    2300088: ID396
+    2300090: ID396 1
+    2300092: ID402
+    2300094: ID402 1
+    2300096: ID408
+    2300098: ID408 1
+    2300100: ID414
+    2300102: ID414 1
+    2300104: ID43
+    2300106: ID430
+    2300108: ID436
+    2300110: ID444
+    2300112: ID450
+    2300114: ID456
+    2300116: ID462
+    2300118: ID472
+    2300120: ID478
+    2300122: ID484
+    2300124: ID51
+    2300126: ID57
+    2300128: ID65
+    2300130: ID71
+    2300132: ID77
+    2300134: ID83
+    2300136: ID89
+    2300138: ID97
+    2300140: Wing
+    2300142: Wing 1
+    2300144: Wing 2
+    2300146: Wing 3
+    3300000: Body
+    3300002: Bryce
+    3300004: FullHead
+    3300006: FullWing
+    3300008: FullWing 1
+    3300010: ID103
+    3300012: ID13
+    3300014: ID159
+    3300016: ID165
+    3300018: ID171
+    3300020: ID177
+    3300022: ID183
+    3300024: ID189
+    3300026: ID21
+    3300028: ID213
+    3300030: ID219
+    3300032: ID225
+    3300034: ID231
+    3300036: ID237
+    3300038: ID243
+    3300040: ID267
+    3300042: ID275
+    3300044: ID283
+    3300046: ID289
+    3300048: ID29
+    3300050: ID295
+    3300052: ID301
+    3300054: ID314
+    3300056: ID320
+    3300058: ID326
+    3300060: ID334
+    3300062: ID350
+    3300064: ID350 1
+    3300066: ID358
+    3300068: ID358 1
+    3300070: ID364
+    3300072: ID364 1
+    3300074: ID37
+    3300076: ID370
+    3300078: ID370 1
+    3300080: ID376
+    3300082: ID376 1
+    3300084: ID390
+    3300086: ID390 1
+    3300088: ID396
+    3300090: ID396 1
+    3300092: ID402
+    3300094: ID402 1
+    3300096: ID408
+    3300098: ID408 1
+    3300100: ID414
+    3300102: ID414 1
+    3300104: ID43
+    3300106: ID430
+    3300108: ID436
+    3300110: ID444
+    3300112: ID450
+    3300114: ID456
+    3300116: ID462
+    3300118: ID472
+    3300120: ID478
+    3300122: ID484
+    3300124: ID51
+    3300126: ID57
+    3300128: ID65
+    3300130: ID71
+    3300132: ID77
+    3300134: ID83
+    3300136: ID89
+    3300138: ID97
+    3300140: Wing
+    3300142: Wing 1
+    3300144: Wing 2
+    3300146: Wing 3
+    4300000: Bryce
+    4300002: ID13
+    4300004: ID21
+    4300006: ID29
+    4300008: ID37
+    4300010: ID43
+    4300012: ID51
+    4300014: ID57
+    4300016: ID65
+    4300018: ID71
+    4300020: ID77
+    4300022: ID83
+    4300024: ID89
+    4300026: ID97
+    4300028: ID103
+    4300030: FullWing
+    4300032: ID159
+    4300034: ID165
+    4300036: ID171
+    4300038: ID177
+    4300040: ID183
+    4300042: ID189
+    4300044: FullWing
+    4300046: ID213
+    4300048: ID219
+    4300050: ID225
+    4300052: ID231
+    4300054: ID237
+    4300056: ID243
+    4300058: Body
+    4300060: ID267
+    4300062: ID275
+    4300064: ID283
+    4300066: ID289
+    4300068: ID295
+    4300070: ID301
+    4300072: ID314
+    4300074: ID320
+    4300076: ID326
+    4300078: ID334
+    4300080: Wing
+    4300082: ID350
+    4300084: ID358
+    4300086: ID364
+    4300088: ID370
+    4300090: ID376
+    4300092: Wing
+    4300094: ID390
+    4300096: ID396
+    4300098: ID402
+    4300100: ID408
+    4300102: ID414
+    4300104: FullHead
+    4300106: ID430
+    4300108: ID436
+    4300110: ID444
+    4300112: ID450
+    4300114: ID456
+    4300116: ID462
+    4300118: ID472
+    4300120: ID478
+    4300122: ID484
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

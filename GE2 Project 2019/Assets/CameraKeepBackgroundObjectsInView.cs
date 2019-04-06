@@ -6,6 +6,7 @@ public class CameraKeepBackgroundObjectsInView : MonoBehaviour
 {
     [SerializeField] private Transform target;
     [SerializeField] private Transform[] keepInView;
+    [SerializeField] private float cameraSpeed;
 
     public float scalar;
 
@@ -24,10 +25,14 @@ public class CameraKeepBackgroundObjectsInView : MonoBehaviour
     {
         if (target)
         {
-            transform.LookAt(target);
+            // The step size is equal to speed times frame time.
+            float step = cameraSpeed * Time.deltaTime;
+            Quaternion rotation = Quaternion.LookRotation(target.position - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, step);
+            //transform.LookAt(target);
             float dist = Vector3.Distance(target.position, keepInView[0].position);
             Vector3 extendedTarget = (target.position - keepInView[0].position).normalized * (dist + scalar);
-            transform.position = Vector3.Lerp(transform.position, keepInView[0].position + extendedTarget, Time.deltaTime * 32);
+            transform.position = Vector3.Lerp(transform.position, keepInView[0].position + extendedTarget, Time.deltaTime * 60);
         }
     }
 }

@@ -1,0 +1,201 @@
+fileFormatVersion: 2
+guid: 6e457a10bb4eab246bc9a97fc9b00188
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: rep_venator.qc_skeleton
+    100002: rep_venator_body0_model0
+    100004: rep_venator_body1_model0
+    100006: rep_venator_body2_model0
+    100008: rep_venator_body3_model0
+    100010: rep_venator_body4_model0
+    100012: rep_venator_body5_model0
+    100014: rep_venator_body6_model0
+    100016: rep_venator_body7_model0
+    100018: rep_venator_body8_model0
+    100020: //RootNode
+    100022: root
+    100024: turretA1_part1
+    100026: turretA1_part2
+    100028: turretA1_part2_end
+    100030: turretA2_part1
+    100032: turretA2_part2
+    100034: turretA2_part2_end
+    100036: turretB1_part1
+    100038: turretB1_part2
+    100040: turretB1_part2_end
+    100042: turretB2_part1
+    100044: turretB2_part2
+    100046: turretB2_part2_end
+    100048: turretC1_part1
+    100050: turretC1_part2
+    100052: turretC1_part2_end
+    100054: turretC2_part1
+    100056: turretC2_part2
+    100058: turretC2_part2_end
+    100060: turretD1_part1
+    100062: turretD1_part2
+    100064: turretD1_part2_end
+    100066: turretD2_part1
+    100068: turretD2_part2
+    100070: turretD2_part2_end
+    400000: rep_venator.qc_skeleton
+    400002: rep_venator_body0_model0
+    400004: rep_venator_body1_model0
+    400006: rep_venator_body2_model0
+    400008: rep_venator_body3_model0
+    400010: rep_venator_body4_model0
+    400012: rep_venator_body5_model0
+    400014: rep_venator_body6_model0
+    400016: rep_venator_body7_model0
+    400018: rep_venator_body8_model0
+    400020: //RootNode
+    400022: root
+    400024: turretA1_part1
+    400026: turretA1_part2
+    400028: turretA1_part2_end
+    400030: turretA2_part1
+    400032: turretA2_part2
+    400034: turretA2_part2_end
+    400036: turretB1_part1
+    400038: turretB1_part2
+    400040: turretB1_part2_end
+    400042: turretB2_part1
+    400044: turretB2_part2
+    400046: turretB2_part2_end
+    400048: turretC1_part1
+    400050: turretC1_part2
+    400052: turretC1_part2_end
+    400054: turretC2_part1
+    400056: turretC2_part2
+    400058: turretC2_part2_end
+    400060: turretD1_part1
+    400062: turretD1_part2
+    400064: turretD1_part2_end
+    400066: turretD2_part1
+    400068: turretD2_part2
+    400070: turretD2_part2_end
+    2100000: rep_ven_turrets
+    2100002: Capital_Repvenator_CL
+    2100004: BLUETHRUSTER_CL
+    4300000: rep_venator_body8_model0
+    4300002: rep_venator_body7_model0
+    4300004: rep_venator_body6_model0
+    4300006: rep_venator_body5_model0
+    4300008: rep_venator_body4_model0
+    4300010: rep_venator_body3_model0
+    4300012: rep_venator_body2_model0
+    4300014: rep_venator_body1_model0
+    4300016: rep_venator_body0_model0
+    7400000: rep_venator.qc_skeleton|idle
+    9500000: //RootNode
+    13700000: rep_venator_body0_model0
+    13700002: rep_venator_body1_model0
+    13700004: rep_venator_body2_model0
+    13700006: rep_venator_body3_model0
+    13700008: rep_venator_body4_model0
+    13700010: rep_venator_body5_model0
+    13700012: rep_venator_body6_model0
+    13700014: rep_venator_body7_model0
+    13700016: rep_venator_body8_model0
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BLUETHRUSTER_CL
+    second: {fileID: 2100000, guid: 386c17856bca1724296dc3034b4177ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Capital_Repvenator_CL
+    second: {fileID: 2100000, guid: 8a64741d0f1178847afe42262f3a53fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rep_ven_turrets
+    second: {fileID: 2100000, guid: 1ac05615141a180429d5e14b44193fbd, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 3
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
