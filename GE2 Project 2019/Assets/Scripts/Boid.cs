@@ -113,7 +113,7 @@ public class Boid : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         force = Calculate();
         foreach (ShootingBehavior shootingBehavior in shootingBehaviours)

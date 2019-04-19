@@ -6,6 +6,7 @@ using UnityEngine;
 public class FollowPath : SteeringBehaviour {
 
     public Path path;
+    [SerializeField] private int distanceAllowedFromPoint = 30;
 
     Vector3 nextWaypoint;
 
@@ -17,16 +18,12 @@ public class FollowPath : SteeringBehaviour {
             Gizmos.DrawLine(transform.position, nextWaypoint);
         }
     }
-
-    public void Start()
-    {
-        
-    }
+    
 
     public override Vector3 Calculate()
     {
         nextWaypoint = path.NextWaypoint();
-        if (Vector3.Distance(transform.position, nextWaypoint) < 30)
+        if (Vector3.Distance(transform.position, nextWaypoint) < distanceAllowedFromPoint)
         {
             path.AdvanceToNext();
         }

@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class MoveForward : MonoBehaviour
 {
+    [SerializeField] private int speed = 30;
+    [SerializeField] private float destroyAfter = 2;
     
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * 30);
-        Destroy(gameObject, 2f);
+        transform.Translate(Vector3.forward * speed);
+        Destroy(gameObject, destroyAfter);
     }
 }

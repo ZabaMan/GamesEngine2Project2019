@@ -6,7 +6,7 @@ public class CameraPointBetween : MonoBehaviour
 {
     [SerializeField] private Transform target, otherTarget;
 
-    public float scalar;
+    [Range(0, 1)]public float scalar;
 
     private void OnDrawGizmos()
     {
