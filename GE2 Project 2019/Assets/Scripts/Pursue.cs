@@ -26,4 +26,9 @@ public class Pursue : SteeringBehaviour
 
         return boid.SeekForce(targetPos);
     }
+
+    private void Update()
+    {
+        return;
+    }
 }

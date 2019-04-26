@@ -29,7 +29,7 @@ public class Boid : MonoBehaviour
 
         foreach (SteeringBehaviour b in behaviours)
         {
-            if (b.isActiveAndEnabled)
+            //if (b.isActiveAndEnabled)
             {
                 this.behaviours.Add(b);
             }
@@ -39,7 +39,7 @@ public class Boid : MonoBehaviour
 
         foreach (ShootingBehavior b in shootingBehaviours)
         {
-            if (b.isActiveAndEnabled)
+            //if (b.isActiveAndEnabled)
             {
                 this.shootingBehaviours.Add(b);
             }
@@ -116,9 +116,10 @@ public class Boid : MonoBehaviour
     void FixedUpdate()
     {
         force = Calculate();
-        foreach (ShootingBehavior shootingBehavior in shootingBehaviours)
+        foreach (ShootingBehavior b in shootingBehaviours)
         {
-            shootingBehavior.Calculate();
+            if (b.isActiveAndEnabled)
+            b.Calculate();
         }
         Vector3 newAcceleration = force / mass;
         acceleration = Vector3.Lerp(acceleration, newAcceleration, Time.deltaTime);

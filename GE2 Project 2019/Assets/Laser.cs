@@ -8,7 +8,12 @@ public class Laser : ShootingBehavior
     [SerializeField] private float timeBetweenSpawn;
     [SerializeField] private float chargeTime;
     private bool nextSpawn = true;
-    
+
+    private void Start()
+    {
+        return;
+    }
+
 
     public override void Calculate()
     {

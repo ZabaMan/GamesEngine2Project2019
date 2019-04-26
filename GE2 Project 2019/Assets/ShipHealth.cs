@@ -6,7 +6,8 @@ using UnityEngine;
 public class ShipHealth : MonoBehaviour
 {
     Rigidbody rb;
-    [SerializeField] private int healthPoints;
+    public int healthPoints;
+    [SerializeField] private float destroyAfter;
     [Tooltip("Tag of enemy bullet")] [SerializeField] private string enemyTag;
     [SerializeField] private bool explosionOnHit;
     [SerializeField] private int explosionSize;
@@ -17,6 +18,7 @@ public class ShipHealth : MonoBehaviour
     [SerializeField] private bool test;
     [SerializeField] private GameObject explosion;
     [SerializeField] private int gizmoSize = 100;
+    private bool changedTarget = false;
 
     void OnDrawGizmosSelected()
     {
@@ -40,11 +42,23 @@ public class ShipHealth : MonoBehaviour
         {
             if(explosionOnHit)
             {
+                if (healthPoints-- <= 0 && GetComponent<CameraAttention>() && !changedTarget)
+                {
+                    GetComponent<CameraAttention>().TellCameraObjectIsDead(other.GetComponent<MoveForward>().shotFrom);
+                    changedTarget = true;
+                }
                 healthPoints--;
                 GameObject explosionSpawned = Instantiate(explosion, other.transform.position, Quaternion.identity, transform) as GameObject;
                 explosionSpawned.transform.localScale = new Vector3(explosionSize, explosionSize, explosionSize);
                 Destroy(other.gameObject);
                 Destroy(explosionSpawned, 1);
+                Destroy(gameObject, destroyAfter);
+
+                if (healthPoints <= 0)
+                {
+                    StartCoroutine("forceOverTime");
+                    GetComponent<Boid>().maxSpeed = 0;
+                }
             }
             else
             {

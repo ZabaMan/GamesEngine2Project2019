@@ -6,6 +6,7 @@ public class MoveForward : MonoBehaviour
 {
     [SerializeField] private int speed = 30;
     [SerializeField] private float destroyAfter = 2;
+    [HideInInspector] public GameObject shotFrom;
     
     // Update is called once per frame
     void Update()

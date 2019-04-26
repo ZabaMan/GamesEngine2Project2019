@@ -8,6 +8,11 @@ public class Missile : ShootingBehavior
     [SerializeField] private float timeBetweenSpawn;
     private bool nextSpawn = true;
 
+    private void Start()
+    {
+        return;
+    }
+
     public override void Calculate()
     {
         if (canShoot && nextSpawn)
@@ -18,6 +23,10 @@ public class Missile : ShootingBehavior
 
                 projectile.GetComponent<Pursue>().target = boid.GetComponent<Seek>().targetGameObject.GetComponent<Boid>();
                 print("Assigned");
+            }
+            else
+            {
+                projectile.GetComponent<MoveForward>().shotFrom = gameObject;
             }
             spawnPos++;
             if (spawnPos >= projectileSpawns.Length)
