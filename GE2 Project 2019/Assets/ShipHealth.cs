@@ -24,7 +24,7 @@ public class ShipHealth : MonoBehaviour
     {
         // Draw a yellow sphere at the heaviest point's position
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(heaviestPoint, 10 * gizmoSize);
+        Gizmos.DrawSphere(transform.position+ heaviestPoint, 10 * gizmoSize);
     }
 
     void Start()
@@ -36,28 +36,30 @@ public class ShipHealth : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.tag == enemyTag)
+        if (other.gameObject.tag == enemyTag)
         {
-            if(explosionOnHit)
+            Destroy(other.gameObject);
+            if (explosionOnHit)
             {
                 if (healthPoints-- <= 0 && GetComponent<CameraAttention>() && !changedTarget)
                 {
-                    GetComponent<CameraAttention>().TellCameraObjectIsDead(other.GetComponent<MoveForward>().shotFrom);
+                    GetComponent<CameraAttention>().TellCameraObjectIsDead(other.gameObject.GetComponent<MoveForward>().shotFrom);
                     changedTarget = true;
                 }
                 healthPoints--;
                 GameObject explosionSpawned = Instantiate(explosion, other.transform.position, Quaternion.identity, transform) as GameObject;
                 explosionSpawned.transform.localScale = new Vector3(explosionSize, explosionSize, explosionSize);
-                Destroy(other.gameObject);
+                
                 Destroy(explosionSpawned, 1);
-                Destroy(gameObject, destroyAfter);
+                
 
                 if (healthPoints <= 0)
                 {
                     StartCoroutine("forceOverTime");
                     GetComponent<Boid>().maxSpeed = 0;
+                    Destroy(gameObject, destroyAfter);
                 }
             }
             else
@@ -83,6 +85,6 @@ public class ShipHealth : MonoBehaviour
     void ApplyForce()
     {
         
-        rb.AddForceAtPosition(Vector3.down*force, heaviestPoint);
+        rb.AddForceAtPosition(Vector3.down*force, transform.position + heaviestPoint);
     }
 }

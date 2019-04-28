@@ -20,6 +20,7 @@ public class Boid : MonoBehaviour
     public float maxSpeed = 5.0f;
     public float maxForce = 10.0f;
 
+    [HideInInspector] public Vector3 spin;
 
     // Use this for initialization
     void Start()
@@ -130,7 +131,7 @@ public class Boid : MonoBehaviour
         if (velocity.magnitude > float.Epsilon)
         {
             Vector3 tempUp = Vector3.Lerp(transform.up, Vector3.up + (acceleration * banking), Time.deltaTime * 3.0f);
-            transform.LookAt(transform.position + velocity, tempUp);
+            transform.LookAt(transform.position + velocity, tempUp + spin);
 
             transform.position += velocity * Time.deltaTime;
             velocity *= (1.0f - (damping * Time.deltaTime));

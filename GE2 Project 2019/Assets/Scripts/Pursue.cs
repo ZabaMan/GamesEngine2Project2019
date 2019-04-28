@@ -7,6 +7,7 @@ public class Pursue : SteeringBehaviour
     public Boid target;
 
     Vector3 targetPos;
+    private bool slowedDown = false;
 
     public void OnDrawGizmos()
     {
@@ -19,16 +20,45 @@ public class Pursue : SteeringBehaviour
 
     public override Vector3 Calculate()
     {
-        float dist = Vector3.Distance(target.transform.position, transform.position);
-        float time = dist / boid.maxSpeed;
+        if (target)
+        {
+            
+            float dist = Vector3.Distance(target.transform.position, transform.position);
+            
+            if (dist < 1000 && !slowedDown)
+            {
+                boid.maxSpeed = boid.maxSpeed / 10;
+                slowedDown = true;
+            }
+            else if (dist > 1000 && slowedDown)
+            {
+                boid.maxSpeed = boid.maxSpeed * 10;
+                slowedDown = false;
+            }
+            float time = dist / boid.maxSpeed;
 
-        targetPos = target.transform.position + (target.velocity * time);
+            targetPos = target.transform.position + (target.velocity * time);
 
-        return boid.SeekForce(targetPos);
+            return boid.SeekForce(targetPos);
+        }
+
+        return Vector3.forward * boid.maxSpeed;
     }
 
     private void Update()
     {
-        return;
+        if (!target)
+        {
+            target = null;
+        }
+        
+    }
+
+    private void OnDisable()
+    {
+        if (slowedDown)
+        {
+            boid.maxSpeed = boid.maxSpeed * 10;
+        }
     }
 }

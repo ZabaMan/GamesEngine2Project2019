@@ -7,6 +7,7 @@ public class Missile : ShootingBehavior
     private int spawnPos = 0;
     [SerializeField] private float timeBetweenSpawn;
     private bool nextSpawn = true;
+    [SerializeField] private GameObject targetGameObject;
 
     private void Start()
     {
@@ -18,10 +19,10 @@ public class Missile : ShootingBehavior
         if (canShoot && nextSpawn)
         {
             Instantiate(projectile, projectileSpawns[spawnPos].position, transform.rotation);
-            if (projectile.GetComponent<Pursue>())
+            if (projectile.GetComponent<Seek>())
             {
 
-                projectile.GetComponent<Pursue>().target = boid.GetComponent<Seek>().targetGameObject.GetComponent<Boid>();
+                projectile.GetComponent<Seek>().targetGameObject = this.targetGameObject;
                 print("Assigned");
             }
             else
@@ -32,6 +33,7 @@ public class Missile : ShootingBehavior
             if (spawnPos >= projectileSpawns.Length)
             {
                 canShoot = false;
+                if (reloadTime>0)
                 Invoke("CanShoot", reloadTime);
             }
             else

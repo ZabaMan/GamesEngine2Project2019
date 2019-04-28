@@ -15,11 +15,11 @@ public class Zigzag : SteeringBehaviour
     private void OnDrawGizmos()
     {
         Vector3 gizmoTarget = Vector3.forward * distance;
-        gizmoTarget += transform.position;
+        //gizmoTarget += transform.position;
         gizmoTarget.x = angle * flip;
         
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(transform.position, gizmoTarget);
+        Gizmos.DrawLine(transform.position, transform.position+ gizmoTarget);
     }
 
     public override Vector3 Calculate()
@@ -31,11 +31,11 @@ public class Zigzag : SteeringBehaviour
         }
 
         target = Vector3.forward * distance;
-        target += transform.position;
+        //target += transform.position;
         target.x = angle * flip;
         
         
-        return boid.SeekForce(target);
+        return boid.SeekForce(transform.position + target);
     }
 
     private IEnumerator turnZigToZag()

@@ -18,7 +18,11 @@ public class FollowPath : SteeringBehaviour {
             Gizmos.DrawLine(transform.position, nextWaypoint);
         }
     }
-    
+
+    private void Start()
+    {
+        return;
+    }
 
     public override Vector3 Calculate()
     {

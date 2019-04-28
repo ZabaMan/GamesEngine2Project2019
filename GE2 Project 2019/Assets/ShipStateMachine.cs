@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class ShipStateMachine : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class ShipStateMachine : MonoBehaviour
     private int idleBehaviourIndex;
     public List<GameObject> enemiesWithinRange;
     private Boid target;
+    private GameObject targetObject;
     [SerializeField] private string enemyTag;
     [SerializeField] private Vector2 refreshTime;
     private bool refreshing;
@@ -45,8 +47,54 @@ public class ShipStateMachine : MonoBehaviour
         switch (shipState)
         {
             case Behavior.dodge:
+                if (!targetObject)
+                {
+                    print("Target Lost");
+                    target = null;
+                    ChangeState(Behavior.dodge);
+                    enemiesWithinRange.Remove(targetObject);
+                    bool noEnemiesLeft = false;
+                    if (enemiesWithinRange.Count <= 0)
+                    {
+                        ChangeState(Behavior.idle);
+                        noEnemiesLeft = true;
+                    }
+
+                    if (!noEnemiesLeft)
+                    {
+                        RefreshClosestEnemy();
+                    }
+                }
+
+                if (!refreshing)
+                {
+
+                    refreshing = true;
+                    float timeTillRefresh = UnityEngine.Random.Range(refreshTime.x, refreshTime.y);
+                    Invoke("RefreshClosestEnemy", timeTillRefresh);
+                }
                 break;
             case Behavior.pursuit:
+                
+                if (!targetObject)
+                {
+                    print("Target Lost");
+                    target = null;
+                    ChangeState(Behavior.pursuit);
+                    enemiesWithinRange.Remove(targetObject);
+                    bool noEnemiesLeft = false;
+                    if (enemiesWithinRange.Count <= 0)
+                    {
+                        ChangeState(Behavior.idle);
+                        noEnemiesLeft = true;
+                    }
+
+                    if (!noEnemiesLeft)
+                    {
+                        RefreshClosestEnemy();
+                    }
+                }
+
                 if (!refreshing)
                 {
 
@@ -74,6 +122,15 @@ public class ShipStateMachine : MonoBehaviour
             {
                 GetComponent<Zigzag>().enabled = true;
             }
+            if (GetComponent<Flee>())
+            {
+                GetComponent<Flee>().enabled = true;
+                GetComponent<Flee>().targetGameObject = target?.gameObject;
+            }
+            if (GetComponent<Spin>())
+            {
+                GetComponent<Spin>().enabled = true;
+            }
             
         }
         else if (state == Behavior.pursuit && shipState != Behavior.dodge && shipState != state)
@@ -96,6 +153,10 @@ public class ShipStateMachine : MonoBehaviour
             {
                 GetComponent<Missile>().enabled = true;
             }
+            else if (GetComponent<AccurateShooting>())
+            {
+                GetComponent<AccurateShooting>().enabled = true;
+            }
         }
         else if (enemiesWithinRange.Count < 1 && shipState != state)
         {
@@ -116,8 +177,9 @@ public class ShipStateMachine : MonoBehaviour
 
     private void RefreshClosestEnemy()
     {
+        refreshing = false;
         //Check if target is dead
-        if (target?.GetComponent<ShipHealth>().healthPoints <= 0)
+        if (target?.GetComponent<ShipHealth>()?.healthPoints <= 0)
         {
             enemiesWithinRange.Remove(target.gameObject);
             if (enemiesWithinRange.Count == 0)
@@ -127,37 +189,77 @@ public class ShipStateMachine : MonoBehaviour
             return;
         }
 
-        Boid previousTarget = target;
-        GameObject possibleTarget = target?.gameObject;
+        enemiesWithinRange = enemiesWithinRange.Where(item => item != null).ToList();
         
+        GameObject possibleTarget = target?.gameObject;
+        GameObject enemyBehind = target?.gameObject;
         float distanceToEnemy = possibleTarget ? Vector3.Distance(transform.position, possibleTarget.transform.position) : 0;
+        bool changeToDodge = false;
+
         foreach (GameObject enemy in enemiesWithinRange)
         {
-            if (!possibleTarget)
+            
+            Vector3 directionToEnemy = Vector3.Normalize(enemy.transform.position - transform.position);
+            float dot = Vector3.Dot(directionToEnemy, transform.forward);
+            if (Mathf.Round(dot) == -1)
             {
-                possibleTarget = enemy;
-                distanceToEnemy = Vector3.Distance(transform.position, possibleTarget.transform.position);
+                if (shipState != Behavior.dodge)
+                {
+                    enemyBehind = enemy;
+                    distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+                    changeToDodge = true;
+                }
+                else if (shipState == Behavior.dodge && Vector3.Distance(transform.position, enemy.transform.position) < distanceToEnemy)
+                {
+                    enemyBehind = enemy;
+                    distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+                }
+                continue;
             }
-            else if (Vector3.Distance(transform.position, enemy.transform.position) < distanceToEnemy)
+
+            if (Vector3.Distance(transform.position, enemy.transform.position) < distanceToEnemy || !possibleTarget)
             {
                 possibleTarget = enemy;
                 distanceToEnemy = Vector3.Distance(transform.position, possibleTarget.transform.position);
             }
         }
+
+        
+        if (shipState == Behavior.dodge || changeToDodge)
+        {
+            if (target != enemyBehind.GetComponent<Boid>())
+            {
+                target = enemyBehind.GetComponent<Boid>();
+                targetObject = target.gameObject;
+            }
+            if (changeToDodge)
+                ChangeState(Behavior.dodge);
+            return;
+        }
+
 
         Boid possibleTargetBoid = possibleTarget?.GetComponent<Boid>();
         if (target != possibleTargetBoid)
         {
 
             target = possibleTargetBoid;
+            targetObject = target.gameObject;
+            if (GetComponent<Pursue>())
+            {
+                GetComponent<Pursue>().target = target;
+            }
+            else if (GetComponent<Seek>())
+            {
+                GetComponent<Seek>().targetGameObject = target.gameObject;
+            }
             //CHANGE STEERINGBEHAVIOR TARGETS
             if (shipState != Behavior.pursuit)
             ChangeState(Behavior.pursuit);
 
         }
                 
-            
-        refreshing = false;
+        
+        
         
     }
 
@@ -168,7 +270,7 @@ public class ShipStateMachine : MonoBehaviour
         if(other.tag == enemyTag && other.GetComponent<Boid>())
         {
             enemiesWithinRange.Add(other.gameObject);
-            if (enemiesWithinRange.Count >= 0)
+            if (enemiesWithinRange.Count > 0)
             {
                 RefreshClosestEnemy();
             }

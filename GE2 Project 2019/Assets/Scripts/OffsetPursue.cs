@@ -9,22 +9,37 @@ public class OffsetPursue : SteeringBehaviour
     Vector3 targetPos;
     Vector3 worldTarget;
     public Vector3 offset;
+    [SerializeField] private bool moveToLeader;
+    [SerializeField] Transform targetPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        // There is a bug here!!
+        // There is a bug here!! On the false statement
+        if(!moveToLeader)
         offset = transform.position - leader.transform.position;
     }
 
     public override Vector3 Calculate()
     {
-        worldTarget = leader.transform.TransformPoint(offset);
+        if (!moveToLeader)
+        {
+            worldTarget = leader.transform.TransformPoint(offset);
 
-        float dist = Vector3.Distance(worldTarget, transform.position);
-        float time = dist / boid.maxSpeed;
-        targetPos = worldTarget + (leader.velocity * time);
-        return boid.ArriveForce(targetPos);
+            float dist = Vector3.Distance(worldTarget, transform.position);
+            float time = dist / boid.maxSpeed;
+            targetPos = worldTarget + (leader.velocity * time);
+            return boid.ArriveForce(targetPos);
+        }
+        else
+        {
+            worldTarget = targetPosition.position;
+
+            float dist = Vector3.Distance(worldTarget, transform.position);
+            float time = dist / boid.maxSpeed;
+            targetPos = worldTarget + (targetPosition.GetComponentInParent<Boid>().velocity * time);
+            return boid.ArriveForce(targetPos);
+        }
     }
  
 }

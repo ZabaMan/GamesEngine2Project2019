@@ -21,10 +21,8 @@ public class CameraKeepBackgroundObjectsInView : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-        if (target)
-        {
             // The step size is equal to speed times frame time.
             /*float step = cameraSpeed * Time.deltaTime;
             Quaternion rotation = Quaternion.LookRotation(target.position - transform.position);
@@ -32,7 +30,7 @@ public class CameraKeepBackgroundObjectsInView : MonoBehaviour
             transform.LookAt(target);
             float dist = Vector3.Distance(target.position, keepInView[0].position);
             Vector3 extendedTarget = (target.position - keepInView[0].position).normalized * (dist + scalar);
-            transform.position = Vector3.Lerp(transform.position, keepInView[0].position + extendedTarget, Time.deltaTime * 60);
-        }
+            transform.position = Vector3.Lerp(transform.position, keepInView[0].position + extendedTarget, Time.deltaTime*1000);
+        
     }
 }
