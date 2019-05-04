@@ -492,7 +492,7 @@ public class ShipStateMachine : MonoBehaviour
 
 ![S1](https://i.imgur.com/myyhfVP.jpg)
 
-##Scene 1
+## Scene 1
 
 Jedi ships fly through the battle, past their own gunships, before gliding over a frigate and then swooping down to a deeper level within the ship.
 Jedi ships will use a follow behavior, the second Jedi ship will offset the first.
@@ -500,7 +500,7 @@ Camera will lerp beside the first ship and also make sure to keep both the friga
 
 ![S2](https://i.imgur.com/LZS6SBr.jpg)
 
-##Scene 2
+## Scene 2
 
 Enemy ship is shooting at X-Wing ally ship and chasing.
 X-Wing is using flee and jitter to dodge.
@@ -510,7 +510,7 @@ Camera follows X-Wing ally + Enemy (point in-between) till the enemy is shot dow
 
 ![S3](https://i.imgur.com/ThUwoQV.jpg)
 
-##Scene 3
+## Scene 3
 
 Jedi’s pass a group of ally X-Wings who then decide to support them and group up.
 Multiple X-Wings organise behind the two Jedis, creating a formation. All are using offset pursue. 
@@ -518,7 +518,7 @@ The camera follows the Jedi’s but keeps the X-Wings in frame always.
 
 ![S4](https://i.imgur.com/VEc9dr7.jpg)
 
-##Scene 4
+## Scene 4
 
 Enemy’s swoop behind the X-Wing formation and take out a few.
 Most are shot down with lasers and missiles.
@@ -527,7 +527,7 @@ Camera watches the enemy’s and when the X-Wings begin getting shot, it goes to
 
 ![S5](https://i.imgur.com/T3TBmFW.jpg)
 
-##Scene 5
+## Scene 5
 
 Jedi 2 spins on around his forward axis, causing the two following missiles to close their distance together before exploding. 
 Jedi 1 pulls up completely and does a loop, to no avail.
@@ -535,7 +535,7 @@ Camera will follow Jedi 2 first, then Jedi 1.
 
 ![S6](https://i.imgur.com/TpelIa8.jpg)
 
-##Scene 6
+## Scene 6
 
 The rocket misses Jedi 1 barely, as he pulls the brakes on the ships thrusters, the missile passes in front of him yet opens,  releasing buzz droids. Jedi 1 moves into them as he is already in that direction, and the buzz droids attach to his ship. 
 Jedi 2 shoots them off with clean shots from a side angle. 
