@@ -9,10 +9,13 @@ public class AccurateShooting : ShootingBehavior
     [SerializeField] private float timeBetweenSpawn;
     private bool nextSpawn = true;
     [SerializeField] private GameObject targetGameObject;
+    AudioSource audioSource;
+    
 
     private void Start()
     {
-        return;
+        if(GetComponent<AudioSource>())
+        audioSource = GetComponent<AudioSource>();
     }
 
     public override void Calculate()
@@ -27,6 +30,7 @@ public class AccurateShooting : ShootingBehavior
             {
 
                 Instantiate(projectile, projectileSpawns[spawnPos].position, transform.rotation);
+                audioSource?.Play();
                 if (projectile.GetComponent<Seek>())
                 {
 

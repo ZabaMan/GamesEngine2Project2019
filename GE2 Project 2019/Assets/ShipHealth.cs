@@ -19,6 +19,8 @@ public class ShipHealth : MonoBehaviour
     [SerializeField] private GameObject explosion;
     [SerializeField] private int gizmoSize = 100;
     private bool changedTarget = false;
+    AudioSource audioSource;
+    [SerializeField] private bool isTrigger = false;
 
     void OnDrawGizmosSelected()
     {
@@ -34,6 +36,12 @@ public class ShipHealth : MonoBehaviour
         {
             StartCoroutine("forceOverTime");
         }
+
+        if (GetComponent<AudioSource>())
+            audioSource = GetComponent<AudioSource>();
+
+
+        
     }
 
     private void OnCollisionEnter(Collision other)
@@ -41,6 +49,7 @@ public class ShipHealth : MonoBehaviour
         if (other.gameObject.tag == enemyTag)
         {
             Destroy(other.gameObject);
+            audioSource?.Play();
             if (explosionOnHit)
             {
                 if (healthPoints-- <= 0 && GetComponent<CameraAttention>() && !changedTarget)
@@ -57,7 +66,10 @@ public class ShipHealth : MonoBehaviour
 
                 if (healthPoints <= 0)
                 {
+                    
                     StartCoroutine("forceOverTime");
+                    
+                    
                     GetComponent<Boid>().maxSpeed = 0;
                     Destroy(gameObject, destroyAfter);
                 }
@@ -70,7 +82,48 @@ public class ShipHealth : MonoBehaviour
         }
     }
 
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == enemyTag && isTrigger)
+        {
+            Destroy(other.gameObject);
+            audioSource?.Play();
+            if (explosionOnHit)
+            {
+                if (healthPoints-- <= 0 && GetComponent<CameraAttention>() && !changedTarget)
+                {
+                    GetComponent<CameraAttention>().TellCameraObjectIsDead(other.gameObject.GetComponent<MoveForward>().shotFrom);
+                    changedTarget = true;
+                }
+                healthPoints--;
+                GameObject explosionSpawned = Instantiate(explosion, other.transform.position, Quaternion.identity, transform) as GameObject;
+                explosionSpawned.transform.localScale = new Vector3(explosionSize, explosionSize, explosionSize);
+
+                Destroy(explosionSpawned, 1);
+
+
+                if (healthPoints <= 0)
+                {
+
+                    StartCoroutine("forceOverTime");
+                    if(GetComponent<Missile>())
+                    {
+                        GetComponent<Missile>().enabled = false;
+                    }
+                    Destroy(GetComponent<BoxCollider>());
+                    GetComponent<Boid>().maxSpeed = 0;
+                    Destroy(gameObject, destroyAfter);
+                }
+            }
+            else
+            {
+                explosion.SetActive(true);
+                StartCoroutine("forceOverTime");
+            }
+        }
+    }
+
+
 
     private IEnumerator forceOverTime()
     {

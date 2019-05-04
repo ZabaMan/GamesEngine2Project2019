@@ -8,10 +8,12 @@ public class Laser : ShootingBehavior
     [SerializeField] private float timeBetweenSpawn;
     [SerializeField] private float chargeTime;
     private bool nextSpawn = true;
+    AudioSource audioSource;
 
     private void Start()
     {
-        return;
+        if (GetComponent<AudioSource>())
+            audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -51,6 +53,7 @@ public class Laser : ShootingBehavior
     private void Shoot()
     {
         Instantiate(projectile, projectileSpawns[spawnPos].position, transform.rotation);
+        audioSource?.Play();
     }
 
     private void NextSpawn()
