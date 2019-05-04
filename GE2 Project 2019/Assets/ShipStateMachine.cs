@@ -39,21 +39,20 @@ public class ShipStateMachine : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        State = Enum.GetName(typeof(Behavior), shipState);
+        State = Enum.GetName(typeof(Behavior), shipState); // Just for debugging, gives name to Inspector
 
         switch (shipState)
         {
             case Behavior.dodge:
-                if (!targetObject)
+                if (!targetObject) // Used for when the target is destroyed
                 {
                     print("Target Lost");
                     target = null;
-                    ChangeState(Behavior.dodge);
+                    ChangeState(Behavior.dodge); // Refreshes the behavior
                     enemiesWithinRange.Remove(targetObject);
-                    bool noEnemiesLeft = false;
+                    bool noEnemiesLeft = false; // The following is a check if there is anyone else in the enemy list
                     if (enemiesWithinRange.Count <= 0)
                     {
                         ChangeState(Behavior.idle);
@@ -66,17 +65,17 @@ public class ShipStateMachine : MonoBehaviour
                     }
                 }
 
-                if (!refreshing)
+                if (!refreshing) //Refreshes who's closest and if anyones dead in the enemy list
                 {
 
                     refreshing = true;
-                    float timeTillRefresh = UnityEngine.Random.Range(refreshTime.x, refreshTime.y);
+                    float timeTillRefresh = UnityEngine.Random.Range(refreshTime.x, refreshTime.y); // I used a Vector2 as a min max field
                     Invoke("RefreshClosestEnemy", timeTillRefresh);
                 }
                 break;
-            case Behavior.pursuit:
+            case Behavior.pursuit: // Pretty much the same as a dodge
                 
-                if (!targetObject)
+                if (!targetObject)  // Used for when the target is destroyed
                 {
                     print("Target Lost");
                     target = null;
@@ -112,7 +111,8 @@ public class ShipStateMachine : MonoBehaviour
 
     }
 
-    private void ChangeState(Behavior state)
+    private void ChangeState(Behavior state) //Checks if the state is already active, if not, disables all behaviors and applies the new 
+                                             //states behaviors. 
     {
         if (state == Behavior.dodge && shipState != state)
         {
@@ -163,7 +163,6 @@ public class ShipStateMachine : MonoBehaviour
             DisableBehaviours();
             shipState = Behavior.idle;
             behaviours[idleBehaviourIndex].enabled = true;
-            print(behaviours[idleBehaviourIndex]);
         }
     }
 
@@ -189,16 +188,16 @@ public class ShipStateMachine : MonoBehaviour
             return;
         }
 
-        enemiesWithinRange = enemiesWithinRange.Where(item => item != null).ToList();
+        enemiesWithinRange = enemiesWithinRange.Where(item => item != null).ToList(); //Also clears out destroyed enemies
         
-        GameObject possibleTarget = target?.gameObject;
-        GameObject enemyBehind = target?.gameObject;
+        GameObject possibleTarget = target?.gameObject; //Takes last target as the likely new target
+        GameObject enemyBehind = target?.gameObject; //Same but for enemy behind boid
         float distanceToEnemy = possibleTarget ? Vector3.Distance(transform.position, possibleTarget.transform.position) : 0;
-        bool changeToDodge = false;
+        bool dodgeTime = false;
 
         foreach (GameObject enemy in enemiesWithinRange)
         {
-            
+            //A check for the enemies position to the player, if its behind then it's dodge time
             Vector3 directionToEnemy = Vector3.Normalize(enemy.transform.position - transform.position);
             float dot = Vector3.Dot(directionToEnemy, transform.forward);
             if (Mathf.Round(dot) == -1)
@@ -207,13 +206,19 @@ public class ShipStateMachine : MonoBehaviour
                 {
                     enemyBehind = enemy;
                     distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-                    changeToDodge = true;
+                    dodgeTime = true;
                 }
+                //a check to make sure it chooses the closest enemy
                 else if (shipState == Behavior.dodge && Vector3.Distance(transform.position, enemy.transform.position) < distanceToEnemy)
                 {
                     enemyBehind = enemy;
                     distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+                    dodgeTime = true;
                 }
+            }
+
+            if (dodgeTime) // Doesn't check enemies infront anymore
+            {
                 continue;
             }
 
@@ -225,18 +230,17 @@ public class ShipStateMachine : MonoBehaviour
         }
 
         
-        if (shipState == Behavior.dodge || changeToDodge)
+        if (dodgeTime)
         {
             if (target != enemyBehind.GetComponent<Boid>())
             {
                 target = enemyBehind.GetComponent<Boid>();
                 targetObject = target.gameObject;
             }
-            if (changeToDodge)
+            if (shipState != Behavior.dodge)
                 ChangeState(Behavior.dodge);
             return;
         }
-
 
         Boid possibleTargetBoid = possibleTarget?.GetComponent<Boid>();
         if (target != possibleTargetBoid)
@@ -252,20 +256,16 @@ public class ShipStateMachine : MonoBehaviour
             {
                 GetComponent<Seek>().targetGameObject = target.gameObject;
             }
-            //CHANGE STEERINGBEHAVIOR TARGETS
+            
             if (shipState != Behavior.pursuit)
             ChangeState(Behavior.pursuit);
 
         }
-                
-        
-        
-        
     }
 
     
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) // Adds enemies to a list then refreshes to see if the new enemy is closer
     {
         if(other.tag == enemyTag && other.GetComponent<Boid>())
         {
@@ -278,7 +278,7 @@ public class ShipStateMachine : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other) // Checks if the enemy exiting was the target, then refreshes or goes into idle depending
     {
         if(other.tag == enemyTag && enemiesWithinRange.Contains(other.gameObject))
         {

@@ -20,7 +20,7 @@ public class AccurateShooting : ShootingBehavior
 
     public override void Calculate()
     {
-        
+        //Casts a sphereCast infront in search of the enemy it's pursuing/seeking
         Vector3 fwd = transform.TransformDirection(Vector3.forward);
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 100000, Color.green);
         RaycastHit hit;
@@ -28,20 +28,12 @@ public class AccurateShooting : ShootingBehavior
         {
             if (canShoot && nextSpawn)
             {
-
                 Instantiate(projectile, projectileSpawns[spawnPos].position, transform.rotation);
                 audioSource?.Play();
-                if (projectile.GetComponent<Seek>())
-                {
-
-                    projectile.GetComponent<Seek>().targetGameObject = this.targetGameObject;
-                    print("Assigned");
-                }
-                else
-                {
-                    projectile.GetComponent<MoveForward>().shotFrom = gameObject;
-                }
-                spawnPos++;
+                
+                projectile.GetComponent<MoveForward>().shotFrom = gameObject; // In case the enemy has the camera's attention
+                
+                spawnPos++; // Ships can have an array of guns, which they shoot from in sequence or all at once
                 if (spawnPos >= projectileSpawns.Length)
                 {
                     canShoot = false;
@@ -54,11 +46,6 @@ public class AccurateShooting : ShootingBehavior
                     Invoke("NextSpawn", timeBetweenSpawn);
                 }
             }
-        }
-        else if (Physics.SphereCast(transform.position, 500, fwd, out hit))
-        {
-            Debug.DrawRay(transform.position, hit.point, Color.blue);
-            Debug.Log(hit.transform.name);
         }
     }
 
